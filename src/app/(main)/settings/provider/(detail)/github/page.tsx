@@ -1,10 +1,10 @@
 'use client';
 
 import { Markdown } from '@lobehub/ui';
-import { Input } from 'antd';
 import { createStyles } from 'antd-style';
 import { useTranslation } from 'react-i18next';
 
+import { FormPassword } from '@/components/FormInput';
 import { GithubProviderCard } from '@/config/modelProviders';
 import { aiProviderSelectors, useAiInfraStore } from '@/store/aiInfra';
 import { GlobalLLMProviderKey } from '@/types/user/settings';
@@ -41,18 +41,18 @@ const useProviderCard = (): ProviderItem => {
         children: isLoading ? (
           <SkeletonInput />
         ) : (
-          <Input.Password
+          <FormPassword
             autoComplete={'new-password'}
-            placeholder={t(`${providerKey}.personalAccessToken.placeholder`)}
+            placeholder={t(`github.personalAccessToken.placeholder`)}
           />
         ),
         desc: (
           <Markdown className={styles.markdown} fontSize={12} variant={'chat'}>
-            {t(`${providerKey}.personalAccessToken.desc`)}
+            {t(`github.personalAccessToken.desc`)}
           </Markdown>
         ),
-        label: t(`${providerKey}.personalAccessToken.title`),
-        name: [KeyVaultsConfigKey, providerKey, LLMProviderApiTokenKey],
+        label: t(`github.personalAccessToken.title`),
+        name: [KeyVaultsConfigKey, LLMProviderApiTokenKey],
       },
     ],
   };
